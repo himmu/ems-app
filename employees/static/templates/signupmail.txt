@@ -1,0 +1,18 @@
+Hi {{firstname}}
+
+Congratulations you have successfully created your account
+
+Please keep this credential which you provide us
+
+============================================================
+username	:	{{username}}
+password	:	{{password}} 
+============================================================
+
+Verification Code  : {{verification_code}}
+
+click the below link for email verification
+
+http://localhost:8000/verify
+
+Have a great day!

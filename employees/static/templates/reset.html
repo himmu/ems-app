@@ -1,0 +1,20 @@
+<html>
+<head>
+	<title>Reset</title>
+</head>
+<body>
+	<div>
+		<form action="/reset" method="post">
+		{%csrf_token%}
+			<input type="password" name="pass" placeholder="New Password">
+			<input type="password" name="rpass" placeholder="Re-type Password">
+			<input type="submit" value="Reset Password">
+
+
+		</form>
+
+
+	</div>
+
+</body>
+</html>

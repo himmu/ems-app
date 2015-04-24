@@ -1,0 +1,53 @@
+{%extends "base.html"%}
+{% block content%}
+
+<section>
+	<div style="margin-left:50%">
+		<form action="/adduser" method="post">
+		{%csrf_token%}
+			<input type="text" name="fname" placeholder="Firstname" style="display:block;width:50%;height:5%;margin-top:2%">
+			<input type="text" name="mname" placeholder="Middlename" style="display:block;width:50%;height:5%;margin-top:2%">
+			<input type="text" name="lname" placeholder="Lastname" style="display:block;width:50%;height:5%;margin-top:2%">
+			<input type="text" name="email" placeholder="Email" style="display:block;width:50%;height:5%;margin-top:2%">
+			<input type="text" name="password" placeholder="Password" style="display:block;width:50%;height:5%;margin-top:2%">
+			<textarea placeholder="Address" name="address" cols="20" row="5" style="display:block;width:50%;height:5%;margin-top:2%">
+				
+			</textarea>
+			<select name="gender" style="display:block;width:50%;height:5%;margin-top:2%">
+			<option>Gender</option>
+			<option value="male">Male</option>
+			<option value="female">Female</option>
+			</select>
+
+			<select name="marriage" style="display:block;width:50%;height:5%;margin-top:2%">
+			<option>Marital Status</option>
+			<option value="Married">Married</option>
+			<option value="Unmarried">Unmarried</option>
+			</select>
+
+
+			<input type="text" name="phone" placeholder="Contact No." style="display:block;width:50%;height:5%;margin-top:2%">
+
+			<select name="employeerole" style="display:block;width:50%;height:5%;margin-top:2%">
+			<option>Employee Role</option>
+			<option value="Married">Admin</option>
+			<option value="Unmarried">User</option>
+			</select>
+
+
+			<input type="submit" class="btn btn-primary" value="Add Employee" style="display:block;width:50%;height:7%;margin-top:2%">
+
+
+		</form>
+
+
+
+	</div>
+
+
+
+</section>
+
+
+
+{%endblock%}
