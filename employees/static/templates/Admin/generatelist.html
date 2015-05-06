@@ -1,0 +1,63 @@
+{%extends "base.html"%}
+{% block content%}
+<font color="green">
+{%if success_upadate_message %}
+{{success_upadate_message}}
+{%endif%}
+</font>
+<div>
+	
+<center>
+	<h2>Registerd user List</h2>
+	<hr>
+</center>
+</div>
+
+
+<table border="1">
+<th>Id</th>
+<th>Firstname</th>
+<th>Lastname</th>
+<th>Email</th>
+<th><input type="checkbox" id="showpass">Password</th>
+<th>Address</th>
+<th>Gender</th>
+<th>Marital status</th>
+<th>Contact number</th>
+<th>Verified/Unverified</th>
+<th>Picture</th>
+<th>Actions</th>
+{%if user_det%}
+
+{%for i in user_det%}
+<tr >
+<td><img src="/static/img/uploads/{{i.emp_profile_pic}}" width="40" height="40"></td>
+<td>{{i.emp_id}}</td>
+<td>{{i.emp_first_name}}</td>
+<td>{{i.emp_last_name}}</td>
+<td>{{i.emp_email}}</td>
+
+<td>{{i.emp_password}}</td>
+<td>{{i.emp_address}}</td>
+<td>{{i.emp_gender}}</td>
+<td>{{i.emp_marital_status}}</td>
+<td>{{i.emp_contact_number}}</td>
+<td>{{i.emp_role}}</td>
+<td>{{i.is_verified}}</td>
+
+<td>
+
+<a href="/edit_user?id={{i.emp_id}}">Edit</a>/
+<a href="/delete_user?id={{i.emp_id}}">Delete</a>
+</td>
+</tr>
+
+
+
+{%endfor%}
+{%endif%}
+</table>
+
+
+
+{%endblock%}

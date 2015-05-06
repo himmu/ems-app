@@ -31,11 +31,137 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond./static/js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+
+
+
 
 
 </head>
 
 <body id="page-top" class="index">
+
+<!-- Facebook login -->
+<script>
+/*  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.3'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));*/
+</script>
+
+
+
+<script>
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      testAPI();
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into Facebook.';
+    }
+  }
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '860886577317245',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.2' // use version 2.2
+  });
+
+  // Now that we've initialized the JavaScript SDK, we call 
+  // FB.getLoginStatus().  This function gets the state of the
+  // person visiting this page and can return one of three states to
+  // the callback you provide.  They can be:
+  //
+  // 1. Logged into your app ('connected')
+  // 2. Logged into Facebook, but not your app ('not_authorized')
+  // 3. Not logged into Facebook and can't tell if they are logged into
+  //    your app or not.
+  //
+  // These three cases are handled in the callback function.
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function testAPI() {
+    
+    FB.api('/me?',function(response) {
+        console.log(response);
+      var id=response.id;
+      var name=response.name;
+      var firstname=response.first_name;
+      var lastname=response.last_name;
+      var email=response.email;
+      var verified=response.verified;
+      var gender=response.gender;
+      alert(gender);
+     
+    });
+  }
+</script>
+
+<!--
+  Below we include the Login Button social plugin. This button uses
+  the JavaScript SDK to present a graphical Login button that triggers
+  the FB.login() function when clicked.
+-->
+
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status">
+</div>
+<!-- Facebook login End -->
 
 
     <!-- Navigation -->
@@ -69,6 +195,24 @@
                         <a href="#register">Signup</a>
                     </li>
                     <li><a href="#register">Signin</a></li>
+                    <li>
+                      
+                        <button onclick="signinCallback()">
+                          Google Sign in
+
+                        </button>
+
+                    </li>
+
+                    <li>
+                     <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                        </fb:login-button>
+
+                        <div id="status">
+                        
+                        </div>
+
+                    </li>
 
                      
                     
@@ -107,7 +251,12 @@
                         <span style="font-size:50%;margin-left:-40%"><input type="checkbox" value="1" name="remember">&nbsp;&nbsp;&nbsp;Remember me&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a style="color:white;cursor:pointer" href="/fpass" value="1" >Forget Password ?</a>
                         </span>
+                        
+                       
 
+                        
+                        </form>
+                    </div>
                         
                         </form>
                     </div>
@@ -116,43 +265,96 @@
         </div>
 
         <div class="intro-text" id="register">
-                        <span   class="name">Register Here</span>
+                       
+        
+
+<!-- google login script -->
+        <script type="text/javascript">
+    
+    function signinCallback(authResult) {
+      
+      var param={"callback":signinCallback,"clientid":"369780473877-ojs8i8k4sm9rjd71lk9cutablh57gkvb.apps.googleusercontent.com","scope":"https://www.googleapis.com/auth/plus.login",
+  "cookiepolicy":"single_host_origin"};
+
+   gapi.auth.signIn(param);
+}
+
+
+</script>
+
+           <!-- google login end -->
+
+           <script>
+/*password matchin script*/
+function pho()
+{
+var x=document.forms["regform"]["password"].value;
+var y=document.forms["regform"]["mname"].value;
+if(x!=y)
+{
+alert("Password not match please try again");
+}
+}
+
+
+function btnenable()
+{
+
+if (document.getElementById("terms").checked==true)
+    {
+    document.getElementById("adduder").disabled = false;
+    }
+else{
+    document.getElementById("adduder").disabled = true;
+}
+
+
+}
+</script>
+          <font color="green" ><b> {%if verify_message%}
+           {{verify_message}}
+           {%endif%}</font></b>
+         <span   class="name">Register Here</span>
                         <hr class="star-light">
         <div  style="width:70%;margin-left:25%;padding-left:10%">
-        
-        <form action="/adduser" method="post">
-        {%csrf_token%}
-            <input type="text" name="fname" placeholder="Firstname" style="display:block;width:50%;height:5%;margin-top:2%;color:black">
-            <input type="text" name="mname" placeholder="Middlename" style="display:block;width:50%;height:5%;margin-top:2%;color:black">
-            <input type="text" name="lname" placeholder="Lastname" style="display:block;width:50%;height:5%;margin-top:2%;color:black">
-            <input type="text" name="email" placeholder="Email" style="display:block;width:50%;height:5%;margin-top:2%;color:black">
-            <input type="text" name="password" placeholder="Password" style="display:block;width:50%;height:5%;margin-top:2%;color:black">
-            <textarea  name="address" cols="20" row="5" style="display:block;width:50%;height:5%;margin-top:2%;color:black"></textarea>
+        <form action="/adduser" method="post" name="regform" enctype="multipart/form-data">
+         {%csrf_token%}
+          
+  
+             <input type="text"  name="fname" placeholder="Firstname" style="display:block;width:50%;height:5%;margin-top:2%;color:black" required>
+
+
+            <input type="text" name="lname" placeholder="Lastname" style="display:block;width:50%;height:5%;margin-top:2%;color:black" required>
+            <input type="text" name="email" placeholder="Email" style="display:block;width:50%;height:5%;margin-top:2%;color:black" required>
+            <input type="password" name="password" placeholder="Password" style="display:block;width:50%;height:5%;margin-top:2%;color:black" required>
+            <input type="password" onchange="pho()" name="mname" placeholder="Re-enter password" style="display:block;width:50%;height:5%;margin-top:2%;color:black" required>
+            <textarea  name="address" cols="20" row="5" style="display:block;width:50%;height:5%;margin-top:2%;color:black" required></textarea>
                 
             
-            <select name="gender" style="display:block;width:50%;height:5%;margin-top:2%;color:black">
+            <select name="gender" style="display:block;width:50%;height:5%;margin-top:2%;color:black" required>
             <option>Gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
             </select>
 
-            <select name="marriage" style="display:block;width:50%;height:5%;margin-top:2%;color:black">
+            <select name="marriage" style="display:block;width:50%;height:5%;margin-top:2%;color:black" required>
             <option>Marital Status</option>
             <option value="Married">Married</option>
             <option value="Unmarried">Unmarried</option>
             </select>
 
 
-            <input type="text" maxlength="10" name="phone" placeholder="Contact No." style="display:block;width:50%;height:5%;margin-top:2%;color:black" >
+            <input type="text" maxlength="10" name="phone" placeholder="Contact No." style="display:block;width:50%;height:5%;margin-top:2%;color:black" required>
 
-            <select name="employeerole" style="display:block;width:50%;height:5%;margin-top:2%;color:black">
+            <select name="employeerole" style="display:block;width:50%;height:5%;margin-top:2%;color:black" required>
             <option>Employee Role</option>
             <option value="Admin">Admin</option>
             <option value="User">User</option>
             </select>
-
-
-            <input type="submit" class="btn btn-primary" value="Add Employee" style="display:block;width:50%;height:7%;margin-top:2%;color:black">
+            <input type="file" name="profile_pic" style="display:block;width:50%;height:5%;margin-top:2%;color:black">
+            <input type="checkbox" onclick="btnenable()" id="terms"  />&nbsp;&nbsp;&nbsp;I agree with all the <a href="/terms_and_condition" style="color:blue;" >Terms & conditions . </a>
+           
+            <input type="submit" name="abtn" id="adduder" disabled="disabled" class="btn btn-primary" value="Add Employee" style="display:block;width:50%;height:7%;margin-top:2%;color:black">
 
 
         </form>
@@ -219,13 +421,7 @@
 
     <!-- jQuery -->
     
-<script>
 
-function phone()
-{
-alert("a");
-}
-</script>
 </body>
 
 </html>

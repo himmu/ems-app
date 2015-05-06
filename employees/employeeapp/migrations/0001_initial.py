@@ -26,16 +26,16 @@ class Migration(migrations.Migration):
             fields=[
                 ('emp_id', models.CharField(max_length=10, serialize=False, primary_key=True)),
                 ('emp_first_name', models.CharField(max_length=50, null=True)),
-                ('emp_middle_name', models.CharField(max_length=50)),
                 ('emp_last_name', models.CharField(max_length=50)),
                 ('emp_full_name', models.CharField(max_length=200)),
-                ('emp_email', models.EmailField(max_length=75)),
+                ('emp_email', models.EmailField(unique=True, max_length=75)),
                 ('emp_password', models.CharField(max_length=50)),
                 ('emp_address', models.TextField()),
                 ('emp_gender', models.CharField(max_length=10, choices=[(b'Male', b'Male'), (b'Female', b'Female')])),
                 ('emp_marital_status', models.CharField(max_length=15, choices=[(b'Married', b'Married'), (b'Unmarried', b'Unmarried')])),
                 ('emp_contact_number', models.IntegerField(max_length=13)),
                 ('emp_role', models.CharField(max_length=20, null=True, choices=[(b'Admin', b'Admin'), (b'User', b'User')])),
+                ('emp_profile_pic', models.CharField(default=b'avatar.jpg', max_length=200)),
                 ('is_verified', models.BooleanField(default=False)),
             ],
             options={

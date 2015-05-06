@@ -1,0 +1,68 @@
+{%extends "base.html"%}
+
+{% block content%}
+<style>
+
+</style>
+<script type="text/javascript">
+function openwindow()
+{
+
+ window.open("http://localhost:8000/edit_image?id={{emp_id}}", "Edit image","width=300, height=300","toolbar=no,resizable=false");
+ 
+}    
+
+</script>
+<div style="float:left; border:groove; margin-left:5%; margin-top:3%" id="anything">
+
+<img src="/static/img/uploads/{{profile_pic}}" width="140" height="150" id="imgs">
+
+</div><div id="somthing">
+    
+<p class="para"><a href="" onclick="openwindow()">Edit </a>&nbsp;&nbsp;&nbsp;
+<a href="/remove_pro_image" onclick="">Remove</a>
+</p>
+</div>
+<div  style="width:70%;margin-left:40%;padding-left:10%;margin-top:3%">
+        <form action="/edit_user" method="post" name="updateform" enctype="multipart/form-data">
+        {%csrf_token%}
+          
+  
+             <input type="text"  name="fname" placeholder="Firstname" style="display:block;width:50%;height:5%;margin-top:2%;color:black" required value="{{firstname}}">
+
+
+            <input type="text" name="lname" placeholder="Lastname" style="display:block;width:50%;height:5%;margin-top:2%;color:black" required value="{{lastname}}">
+            <input type="text" name="email" placeholder="Email" style="display:block;width:50%;height:5%;margin-top:2%;color:black" required value="{{email}}">
+            <input type="password" name="password" placeholder="Password" style="display:block;width:50%;height:5%;margin-top:2%;color:black" required value="{{password}}">
+            
+            <textarea  name="address" cols="20" row="5" style="display:block;width:50%;height:5%;margin-top:2%;color:black" required>{{address}}</textarea>
+                
+            
+            <select name="gender" style="display:block;width:50%;height:5%;margin-top:2%;color:black" required value="{{gender}}">
+            <option value="{{gender}}">{{gender}}</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            </select>
+
+            <select name="marriage" style="display:block;width:50%;height:5%;margin-top:2%;color:black" required value="{{marry}}">
+            <option value="{{marry}}">{{marry}}</option>
+            <option value="Married">Married</option>
+            <option value="Unmarried">Unmarried</option>
+            </select>
+
+
+            <input type="text" maxlength="10" name="phone" placeholder="Contact No." style="display:block;width:50%;height:5%;margin-top:2%;color:black" required value="{{phone}}">
+
+            <select name="employeerole" style="display:block;width:50%;height:5%;margin-top:2%;color:black" required >
+            <option value="{{role}}">{{role}}</option>
+            <option value="Admin">Admin</option>
+            <option value="User">User</option>
+            </select>
+            
+           <input type="file" name="profile_pic" style="display:block;width:50%;height:5%;margin-top:2%;color:black"><input type="hidden" name="hide" value="{{profile_pic}}">
+            <input type="submit" name="abtn" id="adduder" class="btn btn-primary" value="Update User" style="display:block;width:50%;height:7%;margin-top:2%;color:black">
+
+
+        </form>
+
+{%endblock%}

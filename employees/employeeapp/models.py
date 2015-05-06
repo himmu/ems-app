@@ -16,16 +16,16 @@ class Registered_Employee_Detail(models.Model):
 
 	emp_id=models.CharField(max_length=10,blank=False,null=False,primary_key=True)
 	emp_first_name=models.CharField(max_length=50,null=True)
-	emp_middle_name=models.CharField(max_length=50)
 	emp_last_name=models.CharField(max_length=50)
 	emp_full_name=models.CharField(max_length=200)
-	emp_email=models.EmailField(blank=False,null=False)
+	emp_email=models.EmailField(blank=False,null=False,unique=True)
 	emp_password=models.CharField(max_length=50,blank=False,null=False)
 	emp_address=models.TextField(blank=False,null=False)
 	emp_gender=models.CharField(max_length=10,blank=False,null=False,choices=gender)
 	emp_marital_status=models.CharField(max_length=15,blank=False,null=False,choices=marital_status)
 	emp_contact_number=models.IntegerField(max_length=13,blank=False,null=False)
 	emp_role=models.CharField(max_length=20,blank=False,null=True,choices=role)
+	emp_profile_pic=models.CharField(max_length=200,default="avatar.png")
 	is_verified=models.BooleanField(default=False)
 	def __str__(self):
 		return '%s' %(self.emp_email)

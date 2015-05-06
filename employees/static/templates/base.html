@@ -25,21 +25,30 @@
 
 
 <header id="headers">
+<div style="width:auto;float:left;margin-left:7%"><h3>Employee World</h3></div>
 <form action="/logout" method="post">
 {%csrf_token%}
 <span style="float:right;margin-right:10%;margin-top:2%">
 	<input type="submit"  value="logout" class="btn btn-warning">
-
-</form>
 </span>
+</form>
+<span style="float:right;margin-right:2%;margin-top:3%;">Howdy {{firstname1}}</span>
+<span style="float:right;margin-right:3%;margin-top:1.8%; ">
+    <a href="/admin_index"><img src="/static/img/uploads/{{profile_pic1}}" width="50" height="50" style="border-radius:30px"></a>
+</span>
+
 </header>
 
 
 <aside id="sidebar">
-<a href="/adduser/">
-{%csrf_token%}
-Home</a>
+<ul style="list-style:none;">
+<li><a href="admin_index" style="display:inline-block">Home</a></li>
+<li><a href="/generate_list">
+{%csrf_token%}Generate User list</a></li>
 
+
+<li><a href="/generate_id" style="display:inline-block">Generate Id Card</a></li>
+<li><a href="/reset" style="display:inline-block">Reset Password</a></li>
 </aside>
 
 

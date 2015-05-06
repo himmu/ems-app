@@ -20,11 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '*#9z!5s9jsceia1d69g1&+@evqb$##_1w%%u!v=wqc4&&j1vj6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG =True`
 
 TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".localhost",]
 
 
 # Application definition
@@ -37,15 +36,15 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'employeeapp',
-   
-)
+
+   )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    # 'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
  
@@ -55,8 +54,7 @@ ROOT_URLCONF = 'employees.urls'
 
 WSGI_APPLICATION = 'employees.wsgi.application'
 
-FACEBOOK_APP_ID = '835142029899761'
-FACEBOOK_SECRET_KEY = '753afd90420a440e0b760d67a02a527e'
+
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
@@ -67,8 +65,24 @@ DATABASES = {
     }
 }
 
-# Internationalization
+
+path=os.path.abspath("..")
+
+
+MEDIA_ROOT=path + "/employees/static/static/img/uploads"
+
+MEDIA_URL="http://localhost:8000/static/img/uploads/"
+
+
+IMAGE_ROOT=path + "/employees/static/static/img/uploads/"
+
+
+# # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
+
+
+
+
 
 LANGUAGE_CODE = 'en-us'
 
@@ -91,11 +105,14 @@ EMAIL_PORT = '587'
 # EMAIL_HOST_PASSWORD = '8885662223chinna'
 
 EMAIL_HOST_USER = 'avishek@anipr.in'
-EMAIL_HOST_PASSWORD = 'momdadandme123'
+EMAIL_HOST_PASSWORD = 'iitaieee2012'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
+
+
+
 
 STATIC_URL = '/static/'
 

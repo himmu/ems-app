@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from django.http import HttpResponse
 
 urlpatterns = patterns('employeeapp.views',
     # Examples:
@@ -21,6 +22,19 @@ urlpatterns = patterns('employeeapp.views',
   
     url(r'^admin_index',"admin_index"),
     url(r'^user_index',"user_index"),
+    url(r'^ema',"ema"),
+    url(r"^generate_list","fetch_users_for_admin"),
+    url(r"^edit_user","edit_user_by_admin"),
+    url(r"^delete_user","del_user_by_admin"),
+
+    url(r"^generate_id","generate_id"),
+    url(r"^gen","some_view"),
+    url(r"^edit_image","edit_image"),
+    url(r"^remove_pro_image","remove_profile_pic"),
     # url(r'^index',"admin_activity_page"),
 
+
 )
+
+handler404="employeeapp.views.handler404"
+handler500="employeeapp.views.handler500"

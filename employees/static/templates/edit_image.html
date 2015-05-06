@@ -1,0 +1,25 @@
+<html>
+<head>
+	<script type="text/javascript">
+	function closewindow()
+	{
+		window.close();
+
+	}
+	function reloads()
+	{
+	
+	}
+
+	</script>
+
+</head>
+<body>
+	
+<form action="/edit_image" method="post" enctype="multipart/form-data">
+{%csrf_token%}
+	<input type="file" name="profile_pic">
+	<input type="submit" value="Upload" onclick="closewindow()">
+</form>	
+</body>
+</html>

@@ -1,8 +1,30 @@
-<form action="/verify" method="post">
+<doctype HTML> 
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+<div style="border:outset;width:40%;height:auto;margin-left:30%;margin-right:30%;margin-top:10%;background-color:#cecece">
+<center>
+
+<h2>Email Verification</h2>
+<hr>
+<form action="/verify" method="post" class="horizontal-form" >
 
 {%csrf_token%}
-<input type="email" name="email"><br>
-<input type="text" name="verify"><br>
-<input type="submit" value="Verify">
+<input class="form-control"  type="email" name="email" placeholder="Email" style="width:90%"><br>
+<input class="form-control" type="text" name="verify" placeholder="Verification code" style="width:90%"><br>
+<input class="btn btn-primary" type="submit" value="Verify" style="width:90%">
 
 </form>
+</center>
+</div>

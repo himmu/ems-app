@@ -26,7 +26,7 @@
 
 
 <header id="headers">
-
+<div style="width:auto;float:left;margin-left:7%"><h3>Employee World</h3></div>
 <form action="/logout" method="get">
 
 <span style="float:right;margin-right:10%;margin-top:2%">
@@ -34,13 +34,18 @@
 
 </form>
 </span>
-
+<span style="float:right;margin-right:2%;margin-top:3%;">Howdy {{firstname}}</span>
+<span style="float:right;margin-right:3%;margin-top:1.8%; ">
+    <a href="/user_index"><img src="/static/img/uploads/{{profile_pic}}" width="50" height="50" style="border-radius:30px"></a>
+</span>
 </header>
 
 <aside id="sidebar">
 <div>
-<a href="/users/index">Home</a>
-<a href="/reset">Reset Password</a>
+<ul style="list-style:none;">
+<a href="user_index" style="display:inline-block">Home</a>
+<a href="/generate_id" style="display:inline-block">Generate Id Card</a>
+<a href="/reset" style="display:inline-block">Reset Password</a>
 
 </div>
 </aside>

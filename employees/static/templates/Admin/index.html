@@ -2,8 +2,29 @@
 {%extends "base.html"%}
 {% block content%}
 
+<div class="col-md-3" style="background-color:#5C2D91;margin-left:6%;margin-top:2%;color:white;height:200px;float:left;text-align:center">
+<h3>Users count</h3>
+<hr>
+<h1>{{usercount}}</h1>
+</div>
+<div class="col-md-3" style="height:200px;background-color:#5C2D91;margin-left:2%;margin-top:2%;color:white;float:left;margin-top:1%;text-align:center">
 
 
+ <h3>Recent activity</h3>
+<hr>
+<div style="">
+<marquee behavior="scroll" direction="up" scrollamount="5">
 
+
+<h4>Activity 1</h4><br>
+<h4>Activity 2</h4><br>
+<h4>Activity 3</h4><br>
+<h4>Activity 4</h4><br>
+
+
+</marquee>
+</div>
+ </div>
+ 
 
 {%endblock%}
