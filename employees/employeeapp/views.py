@@ -72,18 +72,39 @@ def adduser(request):
 	str1="wert5y6u7iopasdfghjklzxcvbnm"
 	str2="zxcvbnmasdfghjklqwertyuiop"
 	str3="asdfghjklqwertyuiopzxcvbnm"
+	
 	if request.method=="POST":
+		print "hello"
 		emp_id=random.choice(str1)+random.choice(str2)+random.choice(str3)+str(random.randint(0,200))
 		emp_first_name=request.POST['fname']
+		print emp_first_name
 		emp_last_name=request.POST['lname']
-		emp_full_name=emp_first_name+" "+emp_last_name
+		try:
+			emp_full_name=emp_first_name+" "+emp_last_name
+		except:
+			emp_full_name=request.POST['full_name']
 		emp_email=request.POST['email']
-		emp_password=request.POST['password']
-		emp_address=request.POST['address']
+		try:
+			emp_password=request.POST['password']
+		except:
+			emp_password=""
+		try:
+			emp_address=request.POST['address']
+		except:
+			emp_address=""
 		emp_gender=request.POST['gender']
-		emp_marital_status=request.POST['marriage']
-		emp_contact_number=request.POST['phone']
-		emp_role=request.POST['employeerole']
+		try:
+			emp_marital_status=request.POST['marriage']
+		except:
+			emp_marital_status=""
+		try:
+			emp_contact_number=request.POST['phone']
+		except:
+			emp_contact_number=0
+		try:
+			emp_role=request.POST['employeerole']
+		except:
+			emp_role="User"
 		if 'profile_pic' in request.FILES:
 
 			filee=request.FILES['profile_pic']
@@ -118,7 +139,7 @@ def adduser(request):
 			msg=EmailMultiAlternatives(subject,"",by,to)
 			msg.attach_alternative(htmlt, "text/html") 
 			msg.send() 
-			return render_to_response("index.html",content)
+			return render_to_response("index.html",content,context_instance=RequestContext(request))
 			
 
 
@@ -485,8 +506,8 @@ def edit_image(request):
 		del request.session['tempid']
 	
 	# details=Registered_Employee_Detail.objects.filter(emp_email=session).update(emp_profile_pic=pic)
-	return render_to_response("edit_image.html",content,context_instance=RequestContext(request))
-
+	# return render_to_response("edit_image.html",content,context_instance=RequestContext(request))
+	return edit_user_by_admin(request)
 def remove_profile_pic(request):
 	content={}
 
@@ -509,3 +530,15 @@ def handler500(request):
 
 
 #@@@@@@@@@@@@@@ Dashboard coding from here to end of this comment @@@@@@@@@@@@@
+def facebook_data_fetching_and_authenticating(request):
+	content={}
+	content.update(csrf(request))
+	if request.method=="POST":
+		
+		name=request.POST['full_name']
+		
+		
+	return render_to_response("404.html",content)
+
+def graf(request):
+	return render_to_response("graph.html")

@@ -20,10 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '*#9z!5s9jsceia1d69g1&+@evqb$##_1w%%u!v=wqc4&&j1vj6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =True`
+DEBUG = True
 
 TEMPLATE_DEBUG = True
-ALLOWED_HOSTS = [".localhost",]
+ALLOWED_HOSTS = [".127.0.0.1",".localhost"]
 
 
 # Application definition
@@ -71,7 +71,7 @@ path=os.path.abspath("..")
 
 MEDIA_ROOT=path + "/employees/static/static/img/uploads"
 
-MEDIA_URL="http://localhost:8000/static/img/uploads/"
+MEDIA_URL="http://localhost:8000/static/static/img/uploads/"
 
 
 IMAGE_ROOT=path + "/employees/static/static/img/uploads/"

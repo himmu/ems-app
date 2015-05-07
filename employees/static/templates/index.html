@@ -21,15 +21,15 @@
     <link href="/static/css/freelancer.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome//static/css/font.-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
+    <link href="/static/font-awesome/css/font.-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/fonts/mons.css" rel="stylesheet" type="text/css">
+    <link href="/static/fonts/lato.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/static/js/html5shiv.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond./static/js/1.4.2/respond.min.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.//static//static/js/1.4.2/respond.min.js"></script>
     <![endif]-->
     
 
@@ -40,6 +40,17 @@
 </head>
 
 <body id="page-top" class="index">
+<form name="facebookdata" id="facebookdataid" action="/adduser" method="post">
+{% csrf_token %}
+<input type="hidden" id="id">
+<input type="hidden" id="first_name" name="fname">
+<input type="hidden" id="last_name" name="lname">
+<input type="hidden" id="full_name" name="full_name">
+<input type="hidden" id="gender" name="gender">
+<input type="hidden" id="email" name="email">
+
+<input type="hidden" id="verified">
+</form>
 
 <!-- Facebook login -->
 <script>
@@ -135,8 +146,9 @@
   // successful.  See statusChangeCallback() for when this call is made.
   function testAPI() {
     
-    FB.api('/me?',function(response) {
+    FB.api('/me?fields=picture,email,first_name,name,gender,verified,last_name,relationship_status',function(response) {
         console.log(response);
+        
       var id=response.id;
       var name=response.name;
       var firstname=response.first_name;
@@ -144,7 +156,27 @@
       var email=response.email;
       var verified=response.verified;
       var gender=response.gender;
-      alert(gender);
+      var image=response.picture.data.url;
+      
+      
+      /*ajax part start here*/
+      var elfname=document.getElementById("first_name");
+      elfname.value=firstname;
+      var ellname=document.getElementById("last_name");
+      ellname.value=lastname;
+      var elemail=document.getElementById("email");
+      elemail.value=email;
+      var elgender=document.getElementById("gender");
+      elgender.value=gender;
+      var elid=document.getElementById("id");
+      elid.value=id;
+      var elverified=document.getElementById("verified");
+      elverified.value=verified;
+      var elfulname=document.getElementById("full_name");
+      elfulname.value=name; 
+      
+
+      /*document.getElementById("facebookdataid").submit();*/
      
     });
   }
@@ -156,11 +188,7 @@
   the FB.login() function when clicked.
 -->
 
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
 
-<div id="status">
-</div>
 <!-- Facebook login End -->
 
 
@@ -228,7 +256,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive" src="/static/img/profile.png" alt="">
+                    <img class="img-responsive" src="//static//static/img/profile.png" alt="">
                    <font color="green"> {%if success_message %}
                     {{success_message}}
                     {%endif%}</font>

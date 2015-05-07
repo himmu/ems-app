@@ -32,6 +32,8 @@ urlpatterns = patterns('employeeapp.views',
     url(r"^edit_image","edit_image"),
     url(r"^remove_pro_image","remove_profile_pic"),
     # url(r'^index',"admin_activity_page"),
+    url(r"^fet","facebook_data_fetching_and_authenticating"),
+    url(r"^chart","graf"),
 
 
 )
